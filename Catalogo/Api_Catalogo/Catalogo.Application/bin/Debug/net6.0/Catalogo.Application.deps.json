@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Catalogo.Application/1.0.0": {
+        "dependencies": {
+          "Catalogo.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Catalogo.Application.dll": {}
+        }
+      },
+      "Catalogo.Domain/1.0.0": {
+        "runtime": {
+          "Catalogo.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Catalogo.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Catalogo.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
