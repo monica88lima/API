@@ -1,4 +1,8 @@
+using AutoMapper;
+using Catalogo.Application.Mappings;
 using Catalogo.Infrastructure.Context;
+using Catalogo.Infrastructure.Interface;
+using Catalogo.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +19,14 @@ string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConne
 builder.Services.AddDbContext<AppDbContext>(options => 
                                            options.UseMySql(mySqlConnection,
                                            ServerVersion.AutoDetect(mySqlConnection)));
-                                                      
+
+var mappingConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MappingProfile());
+});
+IMapper mapper =  mappingConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddSingleton<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

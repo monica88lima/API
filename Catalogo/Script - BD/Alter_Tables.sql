@@ -1,0 +1,15 @@
+use CatalogoDB;
+
+ALTER TABLE `CatalogoDB`.`Produtos` 
+CHANGE COLUMN `Nome` `Nome` VARCHAR(250) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL ,
+CHANGE COLUMN `Descricao` `Descricao` VARCHAR(250) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NULL DEFAULT NULL ,
+CHANGE COLUMN `Preco` `Preco` DECIMAL(10,2) NOT NULL ,
+CHANGE COLUMN `ImagemUrl` `ImagemUrl` VARCHAR(250) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL ,
+CHANGE COLUMN `DataCadastro` `DataCadastro` DATETIME DEFAULT NOW() ;
+
+
+
+ALTER TABLE `CatalogoDB`.`Categorias` 
+CHANGE COLUMN `Nome` `Nome` VARCHAR(250) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL ,
+CHANGE COLUMN `ImagemUrl` `ImagemUrl` VARCHAR(250) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL ;
+
