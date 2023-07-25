@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "R+nPK/cZ4FBfvLpB5JCwdTYlrdh8lEL5O1eqSXdZPNBrZtC4wfZralVpnyt/nI2nNpe7cpihq7mNdZgu0guuug==",
+  "dgSpecHash": "aawqD9LqiMSHBAM/aK2Jbr0to25I0GzOJHqvPBrjD/lz89GlL/u/VYQiD+rQdqxd9Byy555SV7A1Ectlawd3PQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Catalogo\\Api_Catalogo\\Catalogo.CrossCutting\\Catalogo.CrossCutting.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\flima\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\flima\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\flima\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.2\\microsoft.entityframeworkcore.abstractions.7.0.2.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.2\\microsoft.entityframeworkcore.analyzers.7.0.2.nupkg.sha512",

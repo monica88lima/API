@@ -60,3 +60,5 @@ C:\Users\flima\OneDrive\Documentos\Projetos\API\Catalogo\Api_Catalogo\Api_Catalo
 C:\Users\flima\OneDrive\Documentos\Projetos\API\Catalogo\Api_Catalogo\Api_Catalogo\bin\Debug\net6.0\Catalogo.Application.pdb
 C:\Users\flima\OneDrive\Documentos\Projetos\API\Catalogo\Api_Catalogo\Api_Catalogo\bin\Debug\net6.0\Catalogo.Domain.pdb
 C:\Users\flima\OneDrive\Documentos\Projetos\API\Catalogo\Api_Catalogo\Api_Catalogo\bin\Debug\net6.0\Catalogo.Infrastructure.pdb
+C:\Users\flima\OneDrive\Documentos\Projetos\API\Catalogo\Api_Catalogo\Api_Catalogo\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\flima\OneDrive\Documentos\Projetos\API\Catalogo\Api_Catalogo\Api_Catalogo\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
