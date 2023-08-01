@@ -1,11 +1,7 @@
 ﻿using Catalogo.Domain.Entities;
 using Catalogo.Infrastructure.Context;
 using Catalogo.Infrastructure.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalogo.Infrastructure.Repositories
 {
@@ -15,9 +11,9 @@ namespace Catalogo.Infrastructure.Repositories
         {
                 
         }
-        public IEnumerable<Produto> GetProductPrice()
+        public async Task<IEnumerable<Produto>> GetProductPrice()
         {
-            return Get().OrderBy(x => x.Preco).ToList();
+            return await Get().OrderBy(x => x.Preco).ToListAsync();
         }
     }
 }

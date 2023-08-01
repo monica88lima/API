@@ -1,5 +1,7 @@
 using AutoMapper;
+using Catalogo.Application.Interfaces;
 using Catalogo.Application.Mappings;
+using Catalogo.Application.Services;
 using Catalogo.Infrastructure.Context;
 using Catalogo.Infrastructure.Interface;
 using Catalogo.Infrastructure.Repositories;
@@ -16,17 +18,22 @@ builder.Services.AddSwaggerGen();
 
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+
 builder.Services.AddDbContext<AppDbContext>(options => 
                                            options.UseMySql(mySqlConnection,
                                            ServerVersion.AutoDetect(mySqlConnection)));
+
 
 var mappingConfig = new MapperConfiguration(mc =>
 {
     mc.AddProfile(new MappingProfile());
 });
+
 IMapper mapper =  mappingConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
-builder.Services.AddSingleton<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddTransient<IProdutoSevice, ProdutoService>();
 
 var app = builder.Build();
 

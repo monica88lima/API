@@ -1,12 +1,7 @@
 ﻿using Catalogo.Infrastructure.Context;
 using Catalogo.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalogo.Infrastructure.Repositories
 {
@@ -33,9 +28,9 @@ namespace Catalogo.Infrastructure.Repositories
               return _context.Set<T>().AsNoTracking();
         }
 
-        public T GetById(Expression<Func<T, bool>> predicate)
+        public async Task<T> GetById(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().SingleOrDefault(predicate);
+            return await _context.Set<T>().SingleOrDefaultAsync(predicate);
         }
 
         public void Update(T entity)

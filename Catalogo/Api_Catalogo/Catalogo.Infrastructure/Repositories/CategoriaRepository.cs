@@ -1,11 +1,7 @@
 ﻿using Catalogo.Domain.Entities;
 using Catalogo.Infrastructure.Context;
 using Catalogo.Infrastructure.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalogo.Infrastructure.Repositories
 {
@@ -16,9 +12,9 @@ namespace Catalogo.Infrastructure.Repositories
 
         }
 
-        public IEnumerable<Categoria> GetCategoriaProdutos()
+        public async Task<IEnumerable<Categoria>> GetCategoriaProdutos()
         {
-            throw new NotImplementedException();
+            return await Get().Include(x => x.Produtos).ToListAsync();
         }
     }
 }

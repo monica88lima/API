@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Catalogo.Infrastructure.Interface
+﻿namespace Catalogo.Infrastructure.Interface
 {
     public interface IUnitOfWork
     {
         ICategoriaRepository CategoriasRepository { get; }
         IProdutoRepository ProdutoRepository { get; }
 
-        void Commit();
+        Task Commit();
         
     }
 }

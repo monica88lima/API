@@ -1,18 +1,13 @@
 ﻿using Catalogo.Infrastructure.Context;
 using Catalogo.Infrastructure.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalogo.Infrastructure.Repositories
 {
-    public class UnitOfWork:IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private ProdutoRepository _produtoRep;
         private CategoriaRepository _categoriaRep;
-        public AppDbContext _context;
+        public readonly AppDbContext _context;
         public UnitOfWork(AppDbContext contexto)
         {
             _context = contexto;
@@ -26,7 +21,7 @@ namespace Catalogo.Infrastructure.Repositories
             }
 
         }
-        
+
 
         public IProdutoRepository ProdutoRepository
         {
@@ -35,15 +30,15 @@ namespace Catalogo.Infrastructure.Repositories
                 return _produtoRep = _produtoRep ?? new ProdutoRepository(_context);
             }
         }
-              
 
-        public void Commit()
+
+        public async Task Commit()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Dispose() 
-        { 
+        public void Dispose()
+        {
             _context.Dispose();
         }
     }

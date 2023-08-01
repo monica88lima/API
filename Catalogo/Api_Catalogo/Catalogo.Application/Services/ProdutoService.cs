@@ -1,21 +1,16 @@
 ﻿using AutoMapper;
 using Catalogo.Application.Dtos;
-using Catalogo.Domain.Entities;
-using Catalogo.Infrastructure.Repositories;
+using Catalogo.Application.Interfaces;
+using Catalogo.Infrastructure.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalogo.Application.Services
 {
-    public class ProdutoService
+    public class ProdutoService: IProdutoSevice
     {
-        private readonly UnitOfWork _uof;
+        private readonly IUnitOfWork _uof;
         private readonly IMapper _mapper;
-        public ProdutoService(UnitOfWork context, IMapper mapper)
+        public ProdutoService(IUnitOfWork context, IMapper mapper)
         {
 
             _uof = context;
@@ -26,6 +21,14 @@ namespace Catalogo.Application.Services
         {
             var produtos= await _uof.ProdutoRepository.Get().ToListAsync();
             var produtosDto = _mapper.Map<List<ProdutoDTO>>(produtos);
+            return produtosDto;
+
+        }
+
+        public async Task<ProdutoDTO> GetProdutosID(int id)
+        {
+            var produtos = await _uof.ProdutoRepository.GetById(x => x.Id == id);
+            var produtosDto = _mapper.Map<ProdutoDTO>(produtos);
             return produtosDto;
 
         }

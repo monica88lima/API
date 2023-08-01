@@ -1,8 +1,5 @@
-﻿using AutoMapper;
-using Catalogo.Application.Dtos;
-using Catalogo.Infrastructure.Context;
-using Catalogo.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Http;
+﻿using Catalogo.Application.Dtos;
+using Catalogo.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalogo.API.Controllers
@@ -12,21 +9,32 @@ namespace Catalogo.API.Controllers
     [Produces("application/json")]
     public class ProdutosController : ControllerBase
     {
-        
-        
+        private readonly IProdutoSevice _produtoService;
 
-        public ProdutosController( )
+
+        public ProdutosController(IProdutoSevice produtoService)
         {
-            
-            
+            _produtoService = produtoService;
+
         }
 
         [HttpGet]
-        public IEnumerable<ProdutoDTO> GetProdutos()
+        public async  Task<ActionResult<List<ProdutoDTO>>> Get()
         {
-            
-            
-            
+            var produtos = await _produtoService.GetProdutos();
+            return Ok(produtos);
+
+
         }
+        [HttpGet("Id")]
+        public async Task<ActionResult<ProdutoDTO>> GetProdutosId(int id)
+        {
+            var produto = await _produtoService.GetProdutosID(id);
+            return Ok(produto);
+
+
+        }
+
+
     }
 }
