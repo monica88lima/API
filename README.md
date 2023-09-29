@@ -31,21 +31,17 @@ Configure a string de conexão com os dados adequados ao banco de dados de escol
   "DefaultConnection": "Server=127.0.0.1;Database=CatalogoDB;Uid=root;Pwd=root;"
    ```
 #No Menu selecione :
-  -> Ferramentas 
-  
-     -> Gerenciador de Pacotes NuGet 
-     
-       -> Console de Gerenciador de Pacotes
+  Ferramentas / Gerenciador de Pacotes NuGet 
+     -> Console de Gerenciador de Pacotes
        
 Execute o comando abaixo para criar o banco de dados e as tabelas:
 
 
-ˋˋˋbash
-add-migration Initial
+  ```bash
+  add-migration Initial
 
-update-database
-ˋˋˋ
-
+  update-database
+   ```
 
 
 > [!NOTE]
