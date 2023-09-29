@@ -26,12 +26,10 @@ Configure a string de conexão com os dados adequados ao banco de dados de escol
 
 #Edite o arquivo appsettings.json
 
-```
-"ConnectionStrings": {
+   ```bash
+  "ConnectionStrings": {
   "DefaultConnection": "Server=127.0.0.1;Database=CatalogoDB;Uid=root;Pwd=root;"
-```
-
-
+   ```
 #No Menu selecione :
   -> Ferramentas 
   
@@ -42,7 +40,7 @@ Configure a string de conexão com os dados adequados ao banco de dados de escol
 Execute o comando abaixo para criar o banco de dados e as tabelas:
 
 
-ˋˋˋ
+ˋˋˋbash
 add-migration Initial
 
 update-database
