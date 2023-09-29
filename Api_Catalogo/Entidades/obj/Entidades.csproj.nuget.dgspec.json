@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {}
+    "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {}
   },
   "projects": {
-    "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {
+    "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
+        "projectPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\flima\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Entidades\\obj\\",
+        "outputPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Dto\\Dto.csproj",
+      "projectUniqueName": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Dto\\Dto.csproj",
       "projectName": "Dto",
-      "projectPath": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Dto\\Dto.csproj",
+      "projectPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Dto\\Dto.csproj",
       "packagesPath": "C:\\Users\\flima\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Dto\\obj\\",
+      "outputPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Dto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

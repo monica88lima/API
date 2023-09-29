@@ -9,3 +9,14 @@ C:\Users\flima\OneDrive\Documentos\Projetos\API\Api_Catalogo\Dto\obj\Debug\net6.
 C:\Users\flima\OneDrive\Documentos\Projetos\API\Api_Catalogo\Dto\obj\Debug\net6.0\refint\Dto.dll
 C:\Users\flima\OneDrive\Documentos\Projetos\API\Api_Catalogo\Dto\obj\Debug\net6.0\Dto.pdb
 C:\Users\flima\OneDrive\Documentos\Projetos\API\Api_Catalogo\Dto\obj\Debug\net6.0\ref\Dto.dll
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\bin\Debug\net6.0\Dto.deps.json
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\bin\Debug\net6.0\Dto.dll
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\bin\Debug\net6.0\Dto.pdb
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\Dto.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\Dto.AssemblyInfoInputs.cache
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\Dto.AssemblyInfo.cs
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\Dto.csproj.CoreCompileInputs.cache
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\Dto.dll
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\refint\Dto.dll
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\Dto.pdb
+D:\Repositorios-Monica\API\Api_Catalogo\Dto\obj\Debug\net6.0\ref\Dto.dll

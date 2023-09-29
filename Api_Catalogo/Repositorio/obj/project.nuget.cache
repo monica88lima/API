@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F63Bqaiuyb1B77aIQ4ifYiHGRUMR2W7jdcAiID93fG48XGzrTnhJMlmbfKD0UgktcuHZi/+m2ptCrFE4v17yBA==",
+  "dgSpecHash": "JSFbUl38LUlcsrFDQpVrWtZHlRjHfDiBs2eZUOBC3tWI4BqM6hoHhYI5o0MkM7F4wb4GASMe7VdvmV04z0FDfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\flima\\OneDrive\\Documentos\\Projetos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
+  "projectFilePath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flima\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",

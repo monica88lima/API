@@ -11,9 +11,33 @@ Esta arquitetura visa promover a organização, a escalabilidade e a manutenibil
 
 #:pushpin:-[Recursos](#recursos)
 
-API - ASP .NET Core Web API
-Class Library (.NET 6.0)
+Visual Studio;
+MySql Workbench;
+
 
 #-[Pré-requisitos](#pré-requisitos)
 
 Versão .NET Core;
+
+#-[Instalação](#instalação)
+Abra com o Visual Studio a Solution Catalogo_Api_v1;
+Configure a string de conexão com os dados adequados ao banco de dados de escolha.
+Edite o arquivo appsettings.json
+ˋˋˋ
+"ConnectionStrings": {
+  "DefaultConnection": "Server=127.0.0.1;Database=CatalogoDB;Uid=root;Pwd=root;"
+ˋˋˋ
+
+No Menu selecione -> Ferramentas -> Gerenciador de Pacotes NuGet -> Console de Gerenciador de Pacotes
+Execute o comando abaixo para criar o banco de dados e as tabelas:
+ˋˋˋ
+   add-migration Initial
+
+   update-database
+
+ˋˋˋ
+
+
+> [!NOTE]
+> Material de Estudo - Curso Web API ASP .NET Core Essencial (.NET 6) com Professor Macoratti
+Curso Udemy .
