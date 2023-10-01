@@ -22,20 +22,26 @@ Versão .NET Core;
 #-[Instalação](#instalação)
 Abra com o Visual Studio a Solution Catalogo_Api_v1;
 Configure a string de conexão com os dados adequados ao banco de dados de escolha.
-Edite o arquivo appsettings.json
-ˋˋˋ
-"ConnectionStrings": {
+
+
+#Edite o arquivo appsettings.json
+
+   ```bash
+  "ConnectionStrings": {
   "DefaultConnection": "Server=127.0.0.1;Database=CatalogoDB;Uid=root;Pwd=root;"
-ˋˋˋ
-
-No Menu selecione -> Ferramentas -> Gerenciador de Pacotes NuGet -> Console de Gerenciador de Pacotes
+   ```
+#No Menu selecione :
+  Ferramentas / Gerenciador de Pacotes NuGet 
+     -> Console de Gerenciador de Pacotes
+       
 Execute o comando abaixo para criar o banco de dados e as tabelas:
-ˋˋˋ
-   add-migration Initial
 
-   update-database
 
-ˋˋˋ
+  ```bash
+  add-migration Initial
+
+  update-database
+   ```
 
 
 > [!NOTE]
