@@ -21,18 +21,18 @@ namespace Catalogo_API_v1.Controllers
         {
             try
             {
-                var produtos = _context.Produtos.ToList();
+                var produtos = _context.Produtos.AsNoTracking().ToList();
                 if (produtos is null)
                 {
-                    return NotFound();
+                    return NotFound("Nenhum produto localizado");
                 }
                 return produtos;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return StatusCode(500, e.Message);
             }
 
 
@@ -42,18 +42,18 @@ namespace Catalogo_API_v1.Controllers
         {
             try
             {
-                var produto = _context.Produtos.FirstOrDefault(x => x.ProdutoId == id);
+                var produto = _context.Produtos.AsNoTracking().FirstOrDefault(x => x.ProdutoId == id);
                 if (produto is null)
                 {
-                    return NotFound();
+                    return NotFound($"Produto com id:{id}, não localizado");
                 }
                 return produto;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return StatusCode(500, e.Message);
             }
         }
         [HttpPost]
@@ -63,7 +63,7 @@ namespace Catalogo_API_v1.Controllers
             {
                 if (prod is null)
                 {
-                    return BadRequest();
+                    return BadRequest("Dados inválidos");
                 }
                 _context.Produtos.Add(prod);
                 _context.SaveChanges();
@@ -72,10 +72,10 @@ namespace Catalogo_API_v1.Controllers
                     new { id = prod.ProdutoId }, prod);
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return StatusCode(500, e.Message);
             }
         }
         [HttpPut("{id:int}")]
@@ -93,10 +93,10 @@ namespace Catalogo_API_v1.Controllers
                 return Ok(prod);
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return StatusCode(500, e.Message);
             }
         }
 
@@ -108,7 +108,7 @@ namespace Catalogo_API_v1.Controllers
                 var produto = _context.Produtos.FirstOrDefault(x => x.ProdutoId == id);
                 if (produto is null)
                 {
-                    return NotFound();
+                    return NotFound($"Produto com id:{id}, não localizado");
                 }
 
                 _context.Produtos.Remove(produto);
@@ -117,10 +117,10 @@ namespace Catalogo_API_v1.Controllers
                 return Ok(produto);
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                return StatusCode(500, e.Message);
             }
             
         }
