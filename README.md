@@ -18,6 +18,11 @@ MySql Workbench;
 #-[Pré-requisitos](#pré-requisitos)
 
 Versão .NET Core;
+Microsoft.EntityFramewrkCore.Design;
+Microsoft.EntityFramewrkCore.Tools;
+Pomelo.Microsoft.EntityFramewrkCore.MySql;
+
+
 
 #-[Instalação](#instalação)
 Abra com o Visual Studio a Solution Catalogo_Api_v1;
