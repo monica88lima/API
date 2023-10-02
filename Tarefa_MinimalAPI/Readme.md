@@ -8,6 +8,12 @@ As rotas são configuradas na classe Program.cs
 
 :notebook:Documentação Disponivel https://learn.microsoft.com/pt-br/aspnet/core/tutorials/min-web-api?view=aspnetcore-7.0&tabs=visual-studio
 
+#Requisitos
+- System.Data.SqlClient
+- Dapper.Contrib
+- Dapper
+
+
 #Para instalar e utilizar:
 
 Crie um banco de dados, a tabela Tarefas e insira algumas tarefas:
