@@ -19,9 +19,10 @@ namespace Entidades
         public int CategoriaId { get; set; }
 
         [MaxLength(80)]
-        [MinLength(2)]
+        [MinLength(2, ErrorMessage ="O nome deve ter mais de {1} caracteres")]
         [Required(ErrorMessage ="Campo Obrigatório")]
         public string Nome { get; set; }
+
         [MaxLength(300)]
         [Required(ErrorMessage = "Campo Obrigatório")]
         public string ImagemUrl { get; set; }
