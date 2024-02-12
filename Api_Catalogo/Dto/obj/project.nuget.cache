@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hF0FhSwU31Xk2Pdmzb80oIAuoReN17jbnAdIF+Il9jaKMnNJ+esyoWb3Zeu4huFApOCzGsO9D4g1CuWIssLewg==",
+  "dgSpecHash": "i2TvtdbezM5NgghlpnOkxm0LOFxX74ikyJatZmOLOZ2yxsjJO0pC7qGE6q90qfG7ZujnVC3yPtp2Nw1c0X4g6w==",
   "success": true,
-  "projectFilePath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Dto\\Dto.csproj",
+  "projectFilePath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Dto\\Dto.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

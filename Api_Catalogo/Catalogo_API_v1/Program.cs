@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using Repositorio.Contexto;
 using Pomelo.EntityFrameworkCore.MySql;
 using System.Text.Json.Serialization;
+using Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConne
 builder.Services.AddDbContext<AppDbContext>(options=>
                                              options.UseMySql(mySqlConnection,
                                              ServerVersion.AutoDetect(mySqlConnection)));
+
+builder.Services.AddTransient<IMeuServico, MeuServico>();
 
 var app = builder.Build();
 

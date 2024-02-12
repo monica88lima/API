@@ -17,11 +17,11 @@ namespace Catalogo_API_v1.Controllers
             _context = context;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Produto>> Get()
+        public async Task<ActionResult<IEnumerable<Produto>>> Get()
         {
             try
             {
-                var produtos = _context.Produtos.AsNoTracking().ToList();
+                var produtos = await _context.Produtos.AsNoTracking().ToListAsync();
                 if (produtos is null)
                 {
                     return NotFound("Nenhum produto localizado");
@@ -38,11 +38,11 @@ namespace Catalogo_API_v1.Controllers
 
         }
         [HttpGet("{id:int}", Name = "ObterProduto")]
-        public ActionResult<Produto> Get(int id)
+        public async Task<ActionResult<Produto>> Get(int id)
         {
             try
             {
-                var produto = _context.Produtos.AsNoTracking().FirstOrDefault(x => x.ProdutoId == id);
+                var produto = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(x => x.ProdutoId == id);
                 if (produto is null)
                 {
                     return NotFound($"Produto com id:{id}, não localizado");

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repositorio.Contexto;
+using Services;
 
 namespace Catalogo_API_v1.Controllers
 {
@@ -11,18 +12,30 @@ namespace Catalogo_API_v1.Controllers
     public class CategoriaController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMeuServico _meuServico;
 
-        public CategoriaController(AppDbContext context)
+        public CategoriaController(AppDbContext context, IMeuServico meuServico)
         {
             _context = context;
+            _meuServico = meuServico;
+        }
+        [HttpGet("SemUso/{nome}")]
+        public ActionResult<string> GetSaudacaoFrom(IMeuServico meuServico, string nome) {
+            return meuServico.Saudacao(nome);
+        }
+
+        [HttpGet("UsandoFromServices/{nome}")]
+        public ActionResult<string> GetSaudacao([FromServices] IMeuServico meuServico, string nome)
+        {
+            return meuServico.Saudacao(nome);
         }
 
         [HttpGet("produtos")]
-        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+        public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriasProdutos()
         {
             try
             {
-                return _context.Categorias.AsNoTracking().Include(p => p.Produtos).ToList();
+                return await _context.Categorias.AsNoTracking().Include(p => p.Produtos).ToListAsync();
                 
             }
             catch (Exception )
@@ -35,11 +48,11 @@ namespace Catalogo_API_v1.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Categoria>> Get()
+        public async Task<ActionResult<IEnumerable<Categoria>>> Get()
         {
             try
             {
-                var categorias = _context.Categorias.AsNoTracking().ToList();
+                var categorias = await _context.Categorias.AsNoTracking().ToListAsync();
                 if (categorias is null)
                 {
                     return NotFound($"Nenhuma Categoria Localizada!");
@@ -57,11 +70,11 @@ namespace Catalogo_API_v1.Controllers
 
         }
         [HttpGet("{id:int}", Name = "ObterCategoria")]
-        public ActionResult<Categoria> Get(int id)
+        public async Task<ActionResult<Categoria>> Get(int id)
         {
             try
             {
-                var categoria = _context.Categorias.AsNoTracking().FirstOrDefault(x => x.CategoriaId == id);
+                var categoria = await _context.Categorias.AsNoTracking().FirstOrDefaultAsync(x => x.CategoriaId == id);
                 if (categoria is null)
                 {
                     return NotFound($"Categoria com id:{id}, não localizado");
@@ -84,7 +97,7 @@ namespace Catalogo_API_v1.Controllers
                 {
                     return BadRequest("Dados inválidos");
                 }
-                _context.Categorias.Add(cat);
+                 _context.Categorias.Add(cat);
                 _context.SaveChanges();
 
                 return new CreatedAtRouteResult("ObterCategoria",

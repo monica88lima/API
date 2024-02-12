@@ -17,17 +17,17 @@ namespace Entidades
         [MaxLength(80)]
         [MinLength(3)]
         [Required(ErrorMessage = "Campo Obrigatório")]
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
 
         [MaxLength(300)]
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
         [Required]
         [Column(TypeName = "decimal(10,2)")]
         public double Preco { get; set; }
 
         [MaxLength(300)]
         [Required(ErrorMessage = "Campo Obrigatório")]
-        public string ImagemUrl { get; set; }
+        public string? ImagemUrl { get; set; }
 
         public  float Estoque { get; set; }
 

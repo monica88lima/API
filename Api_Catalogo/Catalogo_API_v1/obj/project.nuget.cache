@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xDw8GYf+ZW+avmKLl9WGh6dSbp3p1IpEPV+jOBVXK9Z24oiAuOTMvmsLCd84l5QvPsz6TiMaQMgyQvsx6/xKCg==",
+  "dgSpecHash": "qe56vuCTxlu4ZK+1QChvBZPKss5utN0ygV6+sJK7flY1x+POU+Os1aNKiyz76wdfv3TVHVtgVmBi7hQdCeYXaw==",
   "success": true,
-  "projectFilePath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj",
+  "projectFilePath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flima\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
@@ -31,7 +31,6 @@
     "C:\\Users\\flima\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
-    "C:\\Users\\flima\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],

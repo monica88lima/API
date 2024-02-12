@@ -12,6 +12,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "7.0.11",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0",
           "Repositorio": "1.0.0",
+          "Services": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -329,6 +330,11 @@
         "runtime": {
           "Repositorio.dll": {}
         }
+      },
+      "Services/1.0.0": {
+        "runtime": {
+          "Services.dll": {}
+        }
       }
     }
   },
@@ -554,6 +560,11 @@
       "sha512": ""
     },
     "Repositorio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

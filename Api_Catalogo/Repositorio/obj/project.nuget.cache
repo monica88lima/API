@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JSFbUl38LUlcsrFDQpVrWtZHlRjHfDiBs2eZUOBC3tWI4BqM6hoHhYI5o0MkM7F4wb4GASMe7VdvmV04z0FDfQ==",
+  "dgSpecHash": "NVeXzu57fVUN3rVIQHj+wG+AHppipkhiuDUYq7FqJV67S3yjSRU2nAW8SLIa05VZv2NeX2GLBMUJMdOnQm4VZQ==",
   "success": true,
-  "projectFilePath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
+  "projectFilePath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flima\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
@@ -25,7 +25,6 @@
     "C:\\Users\\flima\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
-    "C:\\Users\\flima\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],

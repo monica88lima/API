@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj": {}
+    "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj": {}
   },
   "projects": {
-    "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj": {
+    "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj",
+        "projectUniqueName": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj",
         "projectName": "Catalogo_API_v1",
-        "projectPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj",
+        "projectPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj",
         "packagesPath": "C:\\Users\\flima\\.nuget\\packages\\",
-        "outputPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Catalogo_API_v1\\obj\\",
+        "outputPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Catalogo_API_v1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,11 +30,14 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj": {
-                "projectPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj"
+              "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj": {
+                "projectPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj"
+              },
+              "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Services\\Services.csproj"
               }
             }
           }
@@ -43,11 +46,14 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -89,18 +95,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\flima\\.nuget\\packages\\",
-        "outputPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -111,7 +117,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -119,8 +125,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -128,11 +134,14 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -161,18 +170,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj": {
+    "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
+        "projectUniqueName": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
         "projectName": "Repositorio",
-        "projectPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
+        "projectPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
         "packagesPath": "C:\\Users\\flima\\.nuget\\packages\\",
-        "outputPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Repositorio\\obj\\",
+        "outputPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -183,7 +192,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -191,11 +200,11 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {
-                "projectPath": "D:\\Repositorios-Monica\\API\\Api_Catalogo\\Entidades\\Entidades.csproj"
+              "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Entidades\\Entidades.csproj"
               }
             }
           }
@@ -204,11 +213,14 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -247,7 +259,70 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Services\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\flima\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\flima\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

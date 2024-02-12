@@ -25,7 +25,7 @@ namespace Entidades
         [MaxLength(300)]
         [Required(ErrorMessage = "Campo Obrigatório")]
         public string ImagemUrl { get; set; }
-        [JsonIgnore]
+       
         public ICollection<Produto> Produtos { get; set; }
     }
 }
