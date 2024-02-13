@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Repositorio.Contexto;
-using Pomelo.EntityFrameworkCore.MySql;
 using System.Text.Json.Serialization;
 using Services;
+using Catalogo_API_v1.Middleware;
+using Catalogo_API_v1.Filtro;
+using Catalogo_API_v1.Log;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +19,16 @@ builder.Services.AddSwaggerGen();
 
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<AppDbContext>(options=>
+builder.Services.AddDbContext<AppDbContext>(options =>
                                              options.UseMySql(mySqlConnection,
                                              ServerVersion.AutoDetect(mySqlConnection)));
 
 builder.Services.AddTransient<IMeuServico, MeuServico>();
+builder.Services.AddScoped<ApiLoggingFiltro>();
+builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerConfig
+{
+    LogLevel = LogLevel.Information
+}));
 
 var app = builder.Build();
 
@@ -32,6 +38,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ConfigureExceptionHandler();
 }
 
 app.UseHttpsRedirection();
@@ -41,4 +48,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
- 

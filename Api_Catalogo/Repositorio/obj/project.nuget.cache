@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "NVeXzu57fVUN3rVIQHj+wG+AHppipkhiuDUYq7FqJV67S3yjSRU2nAW8SLIa05VZv2NeX2GLBMUJMdOnQm4VZQ==",
+  "dgSpecHash": "x/qQW8cfM097gUoBeAwvCyjQuMTzI1g3ARALnLqc9tx/uyqEC2ZcVBuWrNtWp9wq7CW7H+cJdEPcpxo2bS29sg==",
   "success": true,
   "projectFilePath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Repositorio\\Repositorio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flima\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\flima\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\flima\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.11\\microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.11\\microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.11\\microsoft.entityframeworkcore.analyzers.7.0.11.nupkg.sha512",

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using Entidades.Validacao;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -17,6 +14,7 @@ namespace Entidades
         [MaxLength(80)]
         [MinLength(3, ErrorMessage ="O nome de possuir mais de {1} caracteres")]
         [Required(ErrorMessage = "Campo Obrigatório")]
+        [LetraMaiuscula]
         public string? Nome { get; set; }
 
         [MaxLength(300)]

@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using Catalogo_API_v1.Filtro;
+using Entidades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,15 +14,18 @@ namespace Catalogo_API_v1.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IMeuServico _meuServico;
+        private readonly ILogger _logger;
 
-        public CategoriaController(AppDbContext context, IMeuServico meuServico)
+        public CategoriaController(AppDbContext context, IMeuServico meuServico, ILogger<CategoriaController> logger)
         {
             _context = context;
             _meuServico = meuServico;
+            _logger = logger;
         }
         [HttpGet("SemUso/{nome}")]
         public ActionResult<string> GetSaudacaoFrom(IMeuServico meuServico, string nome) {
             return meuServico.Saudacao(nome);
+           
         }
 
         [HttpGet("UsandoFromServices/{nome}")]
@@ -48,6 +52,7 @@ namespace Catalogo_API_v1.Controllers
         }
 
         [HttpGet]
+        [ServiceFilter(typeof(ApiLoggingFiltro))]
         public async Task<ActionResult<IEnumerable<Categoria>>> Get()
         {
             try
@@ -69,14 +74,19 @@ namespace Catalogo_API_v1.Controllers
 
 
         }
+
+
         [HttpGet("{id:int}", Name = "ObterCategoria")]
         public async Task<ActionResult<Categoria>> Get(int id)
         {
+            _logger.LogInformation($"### chamada Categoria por id = {id}");
             try
             {
+
                 var categoria = await _context.Categorias.AsNoTracking().FirstOrDefaultAsync(x => x.CategoriaId == id);
                 if (categoria is null)
                 {
+                    _logger.LogInformation($"### chamada Categoria por id = {id} - NotFound");
                     return NotFound($"Categoria com id:{id}, não localizado");
                 }
                 return Ok(categoria);
@@ -110,6 +120,8 @@ namespace Catalogo_API_v1.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+
+
         [HttpPut("{id:int}")]
         public ActionResult Put(int id, Categoria categoria)
         {
