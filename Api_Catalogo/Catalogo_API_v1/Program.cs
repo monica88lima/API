@@ -5,13 +5,18 @@ using Services;
 using Catalogo_API_v1.Middleware;
 using Catalogo_API_v1.Filtro;
 using Catalogo_API_v1.Log;
+using Repositorio.Interface;
+using Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddJsonOptions(options =>
-                                                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+// adicionando filtro global para tratamento de erros
+builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExceptionFiltro)); }).AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -24,11 +29,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                                              ServerVersion.AutoDetect(mySqlConnection)));
 
 builder.Services.AddTransient<IMeuServico, MeuServico>();
+builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
+builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 builder.Services.AddScoped<ApiLoggingFiltro>();
 builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerConfig
 {
     LogLevel = LogLevel.Information
 }));
+
 
 var app = builder.Build();
 
