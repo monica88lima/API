@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Microsoft.EntityFrameworkCore;
 using Repositorio.Contexto;
 using Repositorio.Interface;
 using System;
@@ -33,7 +34,7 @@ namespace Repositorio
 
         public IQueryable<Produto> BuscaProduto()
         {
-            return _appDbContext.Produtos;
+            return _appDbContext.Produtos.AsNoTracking();
         }
 
         public Produto BuscaProdutoID(int id)
@@ -44,7 +45,7 @@ namespace Repositorio
         public Produto CriaProduto(Produto produto)
         {
             if (produto is null)
-                new ArgumentNullException(nameof(produto));
+                throw new InvalidOperationException("Produto Invalido");
 
             _appDbContext.Produtos.Add(produto);
             _appDbContext.SaveChanges();

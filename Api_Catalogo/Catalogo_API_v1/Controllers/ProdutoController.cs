@@ -87,9 +87,12 @@ namespace Catalogo_API_v1.Controllers
                 {
                     return BadRequest();
                 }
-                _repositorio.Altera(prod);
-
-                return Ok(prod);
+               bool sucess = _repositorio.Altera(prod);
+                if (sucess) 
+                    return Ok(prod); 
+                else 
+                    return StatusCode(500, $"Falha ao atualizar produto de id= {id}");
+  
 
             }
             catch (Exception e)
@@ -110,10 +113,12 @@ namespace Catalogo_API_v1.Controllers
                     return NotFound($"Produto com id:{id}, não localizado");
                 }
 
-                _repositorio.Deleta(id);
-
-                return Ok(produto);
-
+               bool sucess =  _repositorio.Deleta(id);
+                if (sucess)
+                    return Ok(produto);
+                else
+                    return StatusCode(500, $"Falha ao tentar deletar produto de id= {id}");
+              
             }
             catch (Exception e)
             {

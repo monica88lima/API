@@ -63,7 +63,7 @@ namespace Repositorio
 
         public IEnumerable<Categoria> PesquisarTodasCategorias()
         {
-            return _context.Categorias.ToList();
+            return _context.Categorias.AsNoTracking().ToList();
         }
         public IEnumerable<Categoria> PesquisarTodasCategoriasEProduto()
         {
