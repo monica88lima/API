@@ -47,3 +47,6 @@ C:\Users\flima\source\repos\API\Api_Catalogo\Catalogo_API_v1\obj\Debug\net8.0\re
 C:\Users\flima\source\repos\API\Api_Catalogo\Catalogo_API_v1\obj\Debug\net8.0\Catalogo_API_v1.pdb
 C:\Users\flima\source\repos\API\Api_Catalogo\Catalogo_API_v1\obj\Debug\net8.0\Catalogo_API_v1.genruntimeconfig.cache
 C:\Users\flima\source\repos\API\Api_Catalogo\Catalogo_API_v1\obj\Debug\net8.0\ref\Catalogo_API_v1.dll
+C:\Users\flima\source\repos\API\Api_Catalogo\Catalogo_API_v1\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\flima\source\repos\API\Api_Catalogo\Catalogo_API_v1\bin\Debug\net8.0\Dto.dll
+C:\Users\flima\source\repos\API\Api_Catalogo\Catalogo_API_v1\bin\Debug\net8.0\Dto.pdb

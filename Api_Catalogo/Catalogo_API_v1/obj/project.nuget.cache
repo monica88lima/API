@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "UNBqGrLWBGG/s3kvsdLwgn4I8MkTeF8hg+asfdZ55CxO3/xuUYKVWVCjVe5cb6FiH4X1ko8ti8bjj/V15Gh5nQ==",
+  "dgSpecHash": "n9XXgGOcApeZJH/byNcEgO/UGyhM63FgrsGRjBu7l62rvLXVLvrWoozR4zXg+xrXaAIm/JDXFhb7enddLNhNOw==",
   "success": true,
   "projectFilePath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Catalogo_API_v1\\Catalogo_API_v1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\flima\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.aspnetcore.diagnostics\\2.2.0\\microsoft.aspnetcore.diagnostics.2.2.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.abstractions\\2.2.0\\microsoft.aspnetcore.diagnostics.abstractions.2.2.0.nupkg.sha512",

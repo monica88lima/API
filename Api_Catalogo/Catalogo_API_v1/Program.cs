@@ -7,6 +7,7 @@ using Catalogo_API_v1.Filtro;
 using Catalogo_API_v1.Log;
 using Repositorio.Interface;
 using Repositorio;
+using Dto.Mapeamento;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,7 @@ string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConne
 builder.Services.AddDbContext<AppDbContext>(options =>
                                              options.UseMySql(mySqlConnection,
                                              ServerVersion.AutoDetect(mySqlConnection)));
-
+builder.Services.AddAutoMapper(typeof(DtoMappingProfile));
 builder.Services.AddTransient<IMeuServico, MeuServico>();
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();

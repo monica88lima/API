@@ -8,7 +8,7 @@ namespace Dto
     public class ProdutoDTO
     {
 
-        [Key]
+        
         public int ProdutoId { get; set; }
 
         [MaxLength(80)]
@@ -21,7 +21,7 @@ namespace Dto
         public string? Descricao { get; set; }
         [Required]
         [Range(1, 10000, ErrorMessage = "O preço deve estar entre {1} e {2}")]
-        [Column(TypeName = "decimal(10,2)")]
+      
         public double Preco { get; set; }
 
         [MaxLength(300)]

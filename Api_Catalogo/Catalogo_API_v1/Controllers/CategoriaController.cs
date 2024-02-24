@@ -1,4 +1,6 @@
-﻿using Catalogo_API_v1.Filtro;
+﻿using AutoMapper;
+using Catalogo_API_v1.Filtro;
+using Dto;
 using Entidades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,12 +18,14 @@ namespace Catalogo_API_v1.Controllers
         private readonly ICategoriaRepositorio _repositorio;
         private readonly IMeuServico _meuServico;
         private readonly ILogger _logger;
+        private readonly IMapper _mapper;
 
-        public CategoriaController(ICategoriaRepositorio context, IMeuServico meuServico, ILogger<CategoriaController> logger)
+        public CategoriaController(ICategoriaRepositorio context, IMeuServico meuServico, ILogger<CategoriaController> logger, IMapper mapper)
         {
             _repositorio = context;
             _meuServico = meuServico;
             _logger = logger;
+            _mapper = mapper;
         }
         [HttpGet("SemUso/{nome}")]
         public ActionResult<string> GetSaudacaoFrom(IMeuServico meuServico, string nome)
@@ -37,17 +41,35 @@ namespace Catalogo_API_v1.Controllers
         }
 
         [HttpGet("produtos")]
-        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+        public ActionResult<IEnumerable<CategoriaDTO>> GetCategoriasProdutos()
         {
 
-            return _repositorio.PesquisarTodasCategoriasEProduto().ToList();
+           var Categorias =  _repositorio.PesquisarTodasCategoriasEProduto().ToList();
+            if (Categorias.Count > 0)
+            {
+                //mapeando as entidades manualmente
+                var categoriaDto = new List<CategoriaDTO>();
+                foreach (var categoria in Categorias)
+                {
+                    var cateDto = new CategoriaDTO()
+                    {
+                        Nome = categoria.Nome,
+                        ImagemUrl = categoria.ImagemUrl,
+                        CategoriaId = categoria.CategoriaId,
 
+                    };
+                    categoriaDto.Add(cateDto);
+                    //adicionada cada objeto mapeado na lista
+                }
+                return Ok(categoriaDto);
+            }
+            return NotFound($"Nenhuma Categoria Localizada!");
 
         }
 
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFiltro))]
-        public ActionResult<IEnumerable<Categoria>> Get()
+        public ActionResult<IEnumerable<CategoriaDTO>> Get()
         {
 
             var categorias =  _repositorio.PesquisarTodasCategorias().ToList();
@@ -55,17 +77,15 @@ namespace Catalogo_API_v1.Controllers
             {
                 return NotFound($"Nenhuma Categoria Localizada!");
             }
-            return Ok(categorias);
-
-
-
+            var categoriaDto = _mapper.Map<IEnumerable<CategoriaDTO>>(categorias);
+            return Ok(categoriaDto);
 
 
         }
 
 
         [HttpGet("{id:int}", Name = "ObterCategoria")]
-        public ActionResult<Categoria> Get(int id)
+        public ActionResult<CategoriaDTO> Get(int id)
         {
             _logger.LogInformation($"### chamada Categoria por id = {id}");
 
@@ -76,12 +96,19 @@ namespace Catalogo_API_v1.Controllers
                 _logger.LogInformation($"### chamada Categoria por id = {id} - NotFound");
                 return NotFound($"Categoria com id:{id}, não localizado");
             }
-            return Ok(categoria);
+            //mapeando a entidade Categoria p/ CategoriaDto de forma manual
+            var categoriaDto = new CategoriaDTO() 
+            { 
+                CategoriaId = categoria.CategoriaId,
+                ImagemUrl = categoria.ImagemUrl,
+                Nome = categoria.Nome 
+            }; 
+            return Ok(categoriaDto);
 
 
         }
         [HttpPost]
-        public ActionResult Post(Categoria cat)
+        public ActionResult<CategoriaDTO> Post(CategoriaDTO cat)
         {
 
             if (cat is null)
@@ -89,19 +116,22 @@ namespace Catalogo_API_v1.Controllers
                 _logger.LogWarning($"Dados Invalidos");
                 return BadRequest("Dados inválidos");
             }
-           var categoriaCriada =  _repositorio.Criar(cat);
-          
+            //Mapeio a entidade DTo para Model
+           var Categoria = _mapper.Map<Categoria>(cat);
+            //crio na base
+           var categoriaCriada =  _repositorio.Criar(Categoria);
+            //mapeio para fazer o retorno da entidade no model dto
+            var CategoriaNova = _mapper.Map<CategoriaDTO>(categoriaCriada);
+
 
             return new CreatedAtRouteResult("ObterCategoria",
-                new { id = categoriaCriada.CategoriaId }, categoriaCriada);
-
-
+                new { id = CategoriaNova.CategoriaId }, CategoriaNova);
 
         }
 
 
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Categoria categoria)
+        public ActionResult<CategoriaDTO> Put(int id, CategoriaDTO categoria)
         {
 
             if (id != categoria.CategoriaId)
@@ -109,17 +139,20 @@ namespace Catalogo_API_v1.Controllers
                 _logger.LogWarning($"Dados Inválidos");
                 return BadRequest("Dados inválidos");
             }
-            _repositorio.Alterar(categoria);  
-           
+            var Categoria = _mapper.Map<Categoria>(categoria);
+            _repositorio.Alterar(Categoria);
 
-            return Ok(categoria);
+            var CategoriaNova = _mapper.Map<CategoriaDTO>(Categoria);
+
+
+            return Ok(CategoriaNova);
 
 
 
         }
 
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id)
+        public ActionResult<CategoriaDTO> Delete(int id)
         {
 
             var categoria = _repositorio.PesquisarCategoria(id);
@@ -130,9 +163,9 @@ namespace Catalogo_API_v1.Controllers
             }
 
             _repositorio.Deletar(id);
-           
+            var Categoria = _mapper.Map<Categoria>(categoria);
 
-            return Ok(categoria);
+            return Ok(Categoria);
 
 
         }

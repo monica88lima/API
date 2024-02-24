@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "1xSYdAa+bEYe1rMWhdroinB3bv1fRqa1gFH9JA2A81YKdWRnXnssa553Rgqw86nH44xH/aZlIdTVlzMvmO/eIQ==",
+  "dgSpecHash": "7muh9peNXu7Tj/QbcOEqTNQPrIrWvWb6njLtLFIy7Mp+DFcXgAv/TWSSNlfKPgVl9xBopbqQD981uwaQj9BVHA==",
   "success": true,
   "projectFilePath": "C:\\Users\\flima\\source\\repos\\API\\Api_Catalogo\\Dto\\Dto.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\flima\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\flima\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",

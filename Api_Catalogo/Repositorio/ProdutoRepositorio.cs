@@ -41,6 +41,40 @@ namespace Repositorio
         {
             return _appDbContext.Produtos.FirstOrDefault(x => x.ProdutoId == id);
         }
+        public IQueryable<Produto> BuscaProdutoFiltro(string nome = null, string descricao = null, float preco = 0, int estoque = 0) 
+        {
+            //var query = _appDbContext.Produtos.AsQueryable();
+            //if(nome is not null )
+            //  query.Where(p => p.Nome == nome);
+
+            //return query;
+            StringBuilder query = new StringBuilder();
+            query.Append("Select * from Produtos where 1 = 1 ");
+
+
+            if(nome is not null )
+                query.Append( $" and nome like {"'%" + nome + "%'"} ");
+            if (descricao is not null)
+                query.Append($" and descricao like {"'%" + descricao + "%'"} ");
+            //tratar preco, dando erro
+            if (preco > 0)
+                query.Append($" and preco ={preco} ");
+            if (estoque > 0)
+                query.Append($" and estoque ={estoque} ");
+
+            return _appDbContext.Produtos.FromSqlRaw(query.ToString());
+            
+        }    
+
+        public IEnumerable<Produto> BuscaProdutoPaginado(Paginacao pg)
+        {
+            return BuscaProduto()
+                 .OrderBy(p => p.Nome)
+                 .Skip((pg.numeroPg - 1) * pg.tamanhoPg)
+                 .Take(pg.tamanhoPg).ToList();
+            // a linha do skip que controla a quantidade de pagina que deve pular
+                
+        }
 
         public Produto CriaProduto(Produto produto)
         {

@@ -14,5 +14,7 @@ namespace Repositorio.Interface
         Produto CriaProduto (Produto produto);
         bool Altera (Produto produto);
         bool Deleta (int  id);
+        IEnumerable<Produto> BuscaProdutoPaginado(Paginacao pg);
+        IQueryable<Produto> BuscaProdutoFiltro(string nome = null, string descricao = null, float preco = 0, int estoque = 0);
     }
 }

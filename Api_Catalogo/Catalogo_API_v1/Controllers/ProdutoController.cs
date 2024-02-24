@@ -1,9 +1,12 @@
-﻿using Entidades;
+﻿using AutoMapper;
+using Dto;
+using Entidades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repositorio.Contexto;
 using Repositorio.Interface;
+using Services;
 
 namespace Catalogo_API_v1.Controllers
 {
@@ -12,13 +15,15 @@ namespace Catalogo_API_v1.Controllers
     public class ProdutoController : ControllerBase
     {
         private readonly IProdutoRepositorio _repositorio;
+        private readonly IMapper _mapper;
 
-        public ProdutoController(IProdutoRepositorio context)
+        public ProdutoController(IProdutoRepositorio context, IMapper mapper)
         {
             _repositorio = context;
+            _mapper = mapper;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<Produto>> Get()
+        public ActionResult<IEnumerable<ProdutoDTO>> Get()
         {
             try
             {
@@ -27,7 +32,9 @@ namespace Catalogo_API_v1.Controllers
                 {
                     return NotFound("Nenhum produto localizado");
                 }
-                return Ok(produtos);
+                //mapper var destino = _mapper.Map<Destino>(origem)
+                var produtosDto = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
+                return Ok(produtosDto);
 
             }
             catch (Exception e)
@@ -38,8 +45,47 @@ namespace Catalogo_API_v1.Controllers
 
 
         }
+        [HttpGet("ProdutosPaginado")]
+        public ActionResult<IEnumerable<ProdutoDTO>> BuscarProdutosPg([FromQuery] Paginacao produtosParametros)
+        {
+            var produtos = _repositorio.BuscaProdutoPaginado(produtosParametros);
+            var produtosDto = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
+            return Ok(produtosDto);
+        }
+        [HttpGet("ProdutoFiltro")]
+        public ActionResult<IEnumerable<ProdutoDTO>> ProdutoComFiltro(string nome=null, string descricao=null, float preco =0, int estoque =0)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(nome) && string.IsNullOrWhiteSpace(descricao) && preco <=0 && estoque <= 0)
+                {
+                    return BadRequest("Dados inválidos");
+                }
+                if(preco > 0)
+                {
+                   preco = Conversao.CorrigirPreco(preco);
+
+                }
+                var produtos = _repositorio.BuscaProdutoFiltro(nome, descricao, preco, estoque).ToList();
+                if(produtos.Count == 0)
+                {
+                    return NotFound($"Nenhum produto localizado.");
+                }
+                var produtosDto = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
+
+                return Ok(produtosDto);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+          
+        }
         [HttpGet("{id:int}", Name = "ObterProduto")]
-        public ActionResult<Produto> Get(int id)
+        public ActionResult<ProdutoDTO> Get(int id)
         {
             try
             {
@@ -48,7 +94,8 @@ namespace Catalogo_API_v1.Controllers
                 {
                     return NotFound($"Produto com id:{id}, não localizado");
                 }
-                return produto;
+                var produtoDto = _mapper.Map<ProdutoDTO>(produto);
+                return produtoDto;
 
             }
             catch (Exception e)
@@ -58,7 +105,7 @@ namespace Catalogo_API_v1.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Post(Produto prod)
+        public ActionResult<ProdutoDTO> Post(ProdutoDTO prod)
         {
             try
             {
@@ -66,10 +113,13 @@ namespace Catalogo_API_v1.Controllers
                 {
                     return BadRequest("Dados inválidos");
                 }
-                _repositorio.CriaProduto(prod);
+                var produto =_mapper.Map<Produto>(prod);
+                _repositorio.CriaProduto(produto);
+
+                var produtoDtoNovo = _mapper.Map<ProdutoDTO>(produto);
 
                 return new CreatedAtRouteResult("ObterProduto",
-                    new { id = prod.ProdutoId }, prod);
+                    new { id = produtoDtoNovo.ProdutoId }, produtoDtoNovo);
 
             }
             catch (Exception e)
@@ -79,7 +129,7 @@ namespace Catalogo_API_v1.Controllers
             }
         }
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, Produto prod)
+        public ActionResult<ProdutoDTO> Put(int id, ProdutoDTO prod)
         {
             try
             {
@@ -87,9 +137,11 @@ namespace Catalogo_API_v1.Controllers
                 {
                     return BadRequest();
                 }
-               bool sucess = _repositorio.Altera(prod);
+                var produto = _mapper.Map<Produto>(prod);
+                bool sucess = _repositorio.Altera(produto);
+                var produtoAtualizadoDto = _mapper.Map<ProdutoDTO>(produto);
                 if (sucess) 
-                    return Ok(prod); 
+                    return Ok(produtoAtualizadoDto); 
                 else 
                     return StatusCode(500, $"Falha ao atualizar produto de id= {id}");
   
@@ -103,7 +155,7 @@ namespace Catalogo_API_v1.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public ActionResult Delete(int id)
+        public ActionResult<ProdutoDTO> Delete(int id)
         {
             try
             {
@@ -112,10 +164,10 @@ namespace Catalogo_API_v1.Controllers
                 {
                     return NotFound($"Produto com id:{id}, não localizado");
                 }
-
-               bool sucess =  _repositorio.Deleta(id);
+                var produtoDto = _mapper.Map<ProdutoDTO>(produto);
+                bool sucess =  _repositorio.Deleta(id);
                 if (sucess)
-                    return Ok(produto);
+                    return Ok(produtoDto);
                 else
                     return StatusCode(500, $"Falha ao tentar deletar produto de id= {id}");
               
