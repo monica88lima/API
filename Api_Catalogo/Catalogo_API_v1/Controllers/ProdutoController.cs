@@ -57,16 +57,14 @@ namespace Catalogo_API_v1.Controllers
         {
             try
             {
+                var preco2 = 0.00f;
                 if (string.IsNullOrWhiteSpace(nome) && string.IsNullOrWhiteSpace(descricao) && preco <=0 && estoque <= 0)
                 {
                     return BadRequest("Dados inválidos");
                 }
                 if(preco > 0)
-                {
-                   preco = Conversao.CorrigirPreco(preco);
-
-                }
-                var produtos = _repositorio.BuscaProdutoFiltro(nome, descricao, preco, estoque).ToList();
+               
+                var produtos = _repositorio.BuscaProdutoFiltro(nome, descricao, preco2, estoque).ToList();
                 if(produtos.Count == 0)
                 {
                     return NotFound($"Nenhum produto localizado.");

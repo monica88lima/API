@@ -4,6 +4,7 @@ using Repositorio.Contexto;
 using Repositorio.Interface;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,7 @@ namespace Repositorio
             //  query.Where(p => p.Nome == nome);
 
             //return query;
+            
             StringBuilder query = new StringBuilder();
             query.Append("Select * from Produtos where 1 = 1 ");
 
@@ -57,8 +59,11 @@ namespace Repositorio
             if (descricao is not null)
                 query.Append($" and descricao like {"'%" + descricao + "%'"} ");
             //tratar preco, dando erro
-            if (preco > 0)
-                query.Append($" and preco ={preco} ");
+            if (preco > 0){
+                
+                query.Append($" and preco ={preco.ToString(CultureInfo.InvariantCulture)} ");
+            }
+        
             if (estoque > 0)
                 query.Append($" and estoque ={estoque} ");
 
