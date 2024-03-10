@@ -10,11 +10,11 @@ namespace Repositorio.Interface
     public interface ICategoriaRepositorio
     {
         //IEnumerable=abstracao  generica de list, colecao,dicionario
-        IEnumerable<Categoria> PesquisarTodasCategorias();
-        Categoria PesquisarCategoria(int id);
-        Categoria Criar(Categoria categoria);
-        Categoria Alterar(Categoria categoria);
-        Categoria Deletar(int id);
-        IEnumerable<Categoria> PesquisarTodasCategoriasEProduto();
+        Task<IEnumerable<Categoria>> PesquisarTodasCategorias();
+        Task<Categoria> PesquisarCategoria(int id);
+        Task<Categoria> Criar(Categoria categoria);
+        Task<Categoria> Alterar(Categoria categoria);
+        Task<Categoria> Deletar(int id);
+        Task<IEnumerable<Categoria>> PesquisarTodasCategoriasEProduto();
     }
 }

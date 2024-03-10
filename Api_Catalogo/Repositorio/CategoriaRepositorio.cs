@@ -19,7 +19,7 @@ namespace Repositorio
             _context = context;
         }
 
-        public Categoria Alterar(Categoria categoria)
+        public async Task<Categoria> Alterar(Categoria categoria)
         {
             if (categoria == null)
             {
@@ -27,11 +27,11 @@ namespace Repositorio
             }
             //para acompanhar uma entidade nao rastreada pelo contexto
             _context.Entry(categoria).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return categoria;
         }
 
-        public Categoria Criar(Categoria categoria)
+        public async Task<Categoria> Criar(Categoria categoria)
         {
             if (categoria == null)
             {
@@ -39,35 +39,35 @@ namespace Repositorio
             }
 
             _context.Categorias.Add(categoria);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return categoria;
         }
 
-        public Categoria Deletar(int id)
+        public async Task<Categoria> Deletar(int id)
         {
-            var categoria = _context.Categorias.Find(id);
+            var categoria = await _context.Categorias.FindAsync(id);
             if (categoria == null)
             {
                 throw new ArgumentNullException(nameof(categoria));
             }
 
             _context.Categorias.Remove(categoria);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return categoria;
         }
 
-        public Categoria PesquisarCategoria(int id)
+        public async Task<Categoria> PesquisarCategoria(int id)
         {
-            return _context.Categorias.FirstOrDefault(x => x.CategoriaId == id);
+            return await _context.Categorias.FirstOrDefaultAsync(x => x.CategoriaId == id);
         }
 
-        public IEnumerable<Categoria> PesquisarTodasCategorias()
+        public async Task<IEnumerable<Categoria>> PesquisarTodasCategorias()
         {
-            return _context.Categorias.AsNoTracking().ToList();
+            return await _context.Categorias.AsNoTracking().ToListAsync();
         }
-        public IEnumerable<Categoria> PesquisarTodasCategoriasEProduto()
+        public async Task<IEnumerable<Categoria>> PesquisarTodasCategoriasEProduto()
         {
-            return _context.Categorias.AsNoTracking().Include(x => x.Produtos).ToList();
+            return await _context.Categorias.AsNoTracking().Include(x => x.Produtos).ToListAsync();
         }
     }
 }

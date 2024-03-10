@@ -41,11 +41,11 @@ namespace Catalogo_API_v1.Controllers
         }
 
         [HttpGet("produtos")]
-        public ActionResult<IEnumerable<CategoriaDTO>> GetCategoriasProdutos()
+        public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetCategoriasProdutos()
         {
 
-           var Categorias =  _repositorio.PesquisarTodasCategoriasEProduto().ToList();
-            if (Categorias.Count > 0)
+            var Categorias = await _repositorio.PesquisarTodasCategoriasEProduto();
+            if (Categorias is null)
             {
                 //mapeando as entidades manualmente
                 var categoriaDto = new List<CategoriaDTO>();
@@ -69,10 +69,10 @@ namespace Catalogo_API_v1.Controllers
 
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFiltro))]
-        public ActionResult<IEnumerable<CategoriaDTO>> Get()
+        public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get()
         {
 
-            var categorias =  _repositorio.PesquisarTodasCategorias().ToList();
+            var categorias = await _repositorio.PesquisarTodasCategorias();
             if (categorias is null)
             {
                 return NotFound($"Nenhuma Categoria Localizada!");
@@ -85,12 +85,12 @@ namespace Catalogo_API_v1.Controllers
 
 
         [HttpGet("{id:int}", Name = "ObterCategoria")]
-        public ActionResult<CategoriaDTO> Get(int id)
+        public async Task<ActionResult<CategoriaDTO>> Get(int id)
         {
             _logger.LogInformation($"### chamada Categoria por id = {id}");
 
 
-            var categoria = _repositorio.PesquisarCategoria(id);
+            var categoria = await _repositorio.PesquisarCategoria(id);
             if (categoria is null)
             {
                 _logger.LogInformation($"### chamada Categoria por id = {id} - NotFound");
@@ -108,7 +108,7 @@ namespace Catalogo_API_v1.Controllers
 
         }
         [HttpPost]
-        public ActionResult<CategoriaDTO> Post(CategoriaDTO cat)
+        public async Task<ActionResult<CategoriaDTO>> Post(CategoriaDTO cat)
         {
 
             if (cat is null)
@@ -117,9 +117,9 @@ namespace Catalogo_API_v1.Controllers
                 return BadRequest("Dados inválidos");
             }
             //Mapeio a entidade DTo para Model
-           var Categoria = _mapper.Map<Categoria>(cat);
+           var Categoria =  _mapper.Map<Categoria>(cat);
             //crio na base
-           var categoriaCriada =  _repositorio.Criar(Categoria);
+           var categoriaCriada = await _repositorio.Criar(Categoria);
             //mapeio para fazer o retorno da entidade no model dto
             var CategoriaNova = _mapper.Map<CategoriaDTO>(categoriaCriada);
 
@@ -131,7 +131,7 @@ namespace Catalogo_API_v1.Controllers
 
 
         [HttpPut("{id:int}")]
-        public ActionResult<CategoriaDTO> Put(int id, CategoriaDTO categoria)
+        public async Task<ActionResult<CategoriaDTO>> Put(int id, CategoriaDTO categoria)
         {
 
             if (id != categoria.CategoriaId)
@@ -140,7 +140,7 @@ namespace Catalogo_API_v1.Controllers
                 return BadRequest("Dados inválidos");
             }
             var Categoria = _mapper.Map<Categoria>(categoria);
-            _repositorio.Alterar(Categoria);
+            await _repositorio.Alterar(Categoria);
 
             var CategoriaNova = _mapper.Map<CategoriaDTO>(Categoria);
 

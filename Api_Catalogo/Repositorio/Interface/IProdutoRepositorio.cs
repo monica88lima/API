@@ -9,12 +9,14 @@ namespace Repositorio.Interface
 {
     public interface IProdutoRepositorio
     {
-        IQueryable<Produto> BuscaProduto();
-        Produto BuscaProdutoID(int id);
-        Produto CriaProduto (Produto produto);
-        bool Altera (Produto produto);
-        bool Deleta (int  id);
+        
+        Task<bool> Altera(Produto produto);
+        Task<IEnumerable<Produto>> BuscaProduto();
+        IQueryable<Produto> BuscaProduto2();
+        Task<Produto> BuscaProdutoID(int id);
+        Task<List<Produto>> BuscaProdutoFiltro(string? nome = null, string? descricao = null, float preco = 0, int estoque = 0);
         IEnumerable<Produto> BuscaProdutoPaginado(Paginacao pg);
-        IQueryable<Produto> BuscaProdutoFiltro(string nome = null, string descricao = null, float preco = 0, int estoque = 0);
+        Task<Produto> CriaProduto(Produto produto);
+        Task<bool> DeletaAsync(int id);
     }
 }

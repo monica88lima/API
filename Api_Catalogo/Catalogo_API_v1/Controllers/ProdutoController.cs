@@ -23,11 +23,11 @@ namespace Catalogo_API_v1.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<ProdutoDTO>> Get()
+        public async Task<ActionResult<IEnumerable<ProdutoDTO>>> Get()
         {
             try
             {
-                var produtos = _repositorio.BuscaProduto();
+                var produtos = await _repositorio.BuscaProduto();
                 if (produtos is null)
                 {
                     return NotFound("Nenhum produto localizado");
@@ -53,18 +53,17 @@ namespace Catalogo_API_v1.Controllers
             return Ok(produtosDto);
         }
         [HttpGet("ProdutoFiltro")]
-        public ActionResult<IEnumerable<ProdutoDTO>> ProdutoComFiltro(string nome=null, string descricao=null, float preco =0, int estoque =0)
+        public async Task<ActionResult<IEnumerable<ProdutoDTO>>> ProdutoComFiltro(string nome=null, string descricao=null, float preco =0, int estoque =0)
         {
             try
             {
-                var preco2 = 0.00f;
+                
                 if (string.IsNullOrWhiteSpace(nome) && string.IsNullOrWhiteSpace(descricao) && preco <=0 && estoque <= 0)
                 {
                     return BadRequest("Dados inválidos");
                 }
-                if(preco > 0)
-               
-                var produtos = _repositorio.BuscaProdutoFiltro(nome, descricao, preco2, estoque).ToList();
+                               
+                var produtos = await _repositorio.BuscaProdutoFiltro(nome, descricao, preco, estoque) ;
                 if(produtos.Count == 0)
                 {
                     return NotFound($"Nenhum produto localizado.");
@@ -83,11 +82,11 @@ namespace Catalogo_API_v1.Controllers
           
         }
         [HttpGet("{id:int}", Name = "ObterProduto")]
-        public ActionResult<ProdutoDTO> Get(int id)
+        public async Task<ActionResult<ProdutoDTO>> Get(int id)
         {
             try
             {
-                var produto = _repositorio.BuscaProdutoID(id);
+                var produto = await _repositorio.BuscaProdutoID(id);
                 if (produto is null)
                 {
                     return NotFound($"Produto com id:{id}, não localizado");
@@ -103,7 +102,7 @@ namespace Catalogo_API_v1.Controllers
             }
         }
         [HttpPost]
-        public ActionResult<ProdutoDTO> Post(ProdutoDTO prod)
+        public async Task<ActionResult<ProdutoDTO>> Post(ProdutoDTO prod)
         {
             try
             {
@@ -112,7 +111,7 @@ namespace Catalogo_API_v1.Controllers
                     return BadRequest("Dados inválidos");
                 }
                 var produto =_mapper.Map<Produto>(prod);
-                _repositorio.CriaProduto(produto);
+                await _repositorio.CriaProduto(produto);
 
                 var produtoDtoNovo = _mapper.Map<ProdutoDTO>(produto);
 
@@ -127,7 +126,7 @@ namespace Catalogo_API_v1.Controllers
             }
         }
         [HttpPut("{id:int}")]
-        public ActionResult<ProdutoDTO> Put(int id, ProdutoDTO prod)
+        public async Task<ActionResult<ProdutoDTO>> Put(int id, ProdutoDTO prod)
         {
             try
             {
@@ -136,7 +135,7 @@ namespace Catalogo_API_v1.Controllers
                     return BadRequest();
                 }
                 var produto = _mapper.Map<Produto>(prod);
-                bool sucess = _repositorio.Altera(produto);
+                bool sucess = await _repositorio.Altera(produto);
                 var produtoAtualizadoDto = _mapper.Map<ProdutoDTO>(produto);
                 if (sucess) 
                     return Ok(produtoAtualizadoDto); 
@@ -153,7 +152,7 @@ namespace Catalogo_API_v1.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public ActionResult<ProdutoDTO> Delete(int id)
+        public async Task<ActionResult<ProdutoDTO>> Delete(int id)
         {
             try
             {
@@ -163,7 +162,7 @@ namespace Catalogo_API_v1.Controllers
                     return NotFound($"Produto com id:{id}, não localizado");
                 }
                 var produtoDto = _mapper.Map<ProdutoDTO>(produto);
-                bool sucess =  _repositorio.Deleta(id);
+                bool sucess =  await _repositorio.DeletaAsync(id);
                 if (sucess)
                     return Ok(produtoDto);
                 else
