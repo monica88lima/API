@@ -1,10 +1,11 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Entidades;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Repositorio.Contexto
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext: IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {

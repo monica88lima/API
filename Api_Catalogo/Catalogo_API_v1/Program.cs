@@ -8,6 +8,7 @@ using Catalogo_API_v1.Log;
 using Repositorio.Interface;
 using Repositorio;
 using Dto.Mapeamento;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExcep
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -37,7 +39,8 @@ builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerConfig
 {
     LogLevel = LogLevel.Information
 }));
-
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 
 var app = builder.Build();
 
