@@ -1,0 +1,22 @@
+﻿using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Services.Interface
+{
+    public interface ITokenService
+    {
+        JwtSecurityToken GenerateAcessToken(IEnumerable<Claim> claims,
+            IConfiguration _config);
+
+        ClaimsPrincipal GetPrincipalFromExpiredToken(string token,
+            IConfiguration _config);
+
+        string GenerateRefreshToken();
+    }
+}

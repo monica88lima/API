@@ -67,7 +67,7 @@ builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerConfig
     LogLevel = LogLevel.Information
 }));
 builder.Services.AddAuthorization();
-builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+//builder.Services.AddAuthentication("Bearer").AddJwtBearer();
 
 var app = builder.Build();
 

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Mapeamento\CategoriaDtoMappingExtensions.cs" />
+    <Compile Remove="ReponseDTO.cs" />
   </ItemGroup>
 
   <ItemGroup>
