@@ -2,12 +2,13 @@
 using Catalogo_API_v1.Filtro;
 using Dto;
 using Entidades;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repositorio.Contexto;
 using Repositorio.Interface;
-using Services;
+using Services.Interface;
 
 namespace Catalogo_API_v1.Controllers
 {
@@ -66,7 +67,7 @@ namespace Catalogo_API_v1.Controllers
             return NotFound($"Nenhuma Categoria Localizada!");
 
         }
-
+        [Authorize]
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFiltro))]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> Get()

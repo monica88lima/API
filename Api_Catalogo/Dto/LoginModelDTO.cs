@@ -11,7 +11,8 @@ namespace Dto
     {
         [Required(ErrorMessage = "campo obrigátorio")]
         public string? UserName { get; set; }
+
         [Required(ErrorMessage = "campo obrigátorio")]
-        public string? Passoword { get; set; }
+        public string? Password { get; set; }
     }
 }

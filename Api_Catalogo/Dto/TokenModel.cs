@@ -12,6 +12,6 @@ namespace Dto
         
         public string? AcessToken { get; set; }
               
-        public string? ARefreshToken { get; set; }
+        public string? RefreshToken { get; set; }
     }
 }
