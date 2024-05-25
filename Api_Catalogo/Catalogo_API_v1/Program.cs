@@ -84,7 +84,14 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+    policy =>
+    {
+        policy.WithOrigins().AllowCredentials().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 builder.Services.AddAutoMapper(typeof(DtoMappingProfile));
 builder.Services.AddTransient<IMeuServico, MeuServico>();
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
@@ -110,6 +117,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 
