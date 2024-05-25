@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Services.Interface;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -18,13 +19,16 @@ namespace Catalogo_API_v1.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(ITokenService tokenService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public AuthController(ITokenService tokenService, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, ILogger<AuthController> logger)
         {
             _tokenService = tokenService;
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _logger = logger;
+           
         }
         [HttpPost]
         [Route("register")]
@@ -114,7 +118,7 @@ namespace Catalogo_API_v1.Controllers
                 return BadRequest("Invalid Acess Token/refresh token");
             }
             var newAcessToken = _tokenService.GenerateAcessToken(principal.Claims.ToList(),_configuration);
-            var newRefreshToken = _tokenService.GenerateRefreshToken;
+            var newRefreshToken = _tokenService.GenerateRefreshToken();
             await _userManager.UpdateAsync(user);
             return new ObjectResult(new
             {
@@ -133,6 +137,55 @@ namespace Catalogo_API_v1.Controllers
             user.RefreshToken = null;
             await _userManager.UpdateAsync(user);
             return NoContent();
+        }
+        [HttpPost]
+        [Route("createRole")]
+        public async Task<IActionResult> CreateRole(string roleName)
+        {
+           var exist = await _roleManager.RoleExistsAsync(roleName);
+            if (!exist)
+            {
+                var roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
+                if (roleResult.Succeeded)
+                {
+                   
+                    _logger.LogInformation(1, "Roles Added");
+                    return StatusCode(StatusCodes.Status200OK,
+                        new ResponseDTO { Message = $"Issue adding the new {roleName} added sucessfully" , Status = "Sucess"});
+                }
+                else
+                {
+                    _logger.LogInformation(2, "Error");
+                                        return StatusCode(StatusCodes.Status400BadRequest,
+                                            new ResponseDTO { Message = $"Issue adding the new {roleName} role", Status = "Error" });
+                }
+            }
+            return StatusCode(StatusCodes.Status400BadRequest,
+                new ResponseDTO { Message = $"Role already exist", Status = "Error" });
+        
+        }
+        [HttpPost]
+        [Route("addRole")]
+        public async Task<IActionResult> AddUserToRole(string email, string roleName)
+        {
+            var user =await _userManager.FindByEmailAsync(email);
+            if (user != null) 
+            {
+             var result = await _userManager.AddToRoleAsync(user, roleName);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation(1,$"User {user.Email} added to the {roleName}");
+                    return StatusCode(StatusCodes.Status200OK, new ResponseDTO { Status = "Sucess", Message = $"User  {user.Email} added to the {roleName}" });
+
+                }
+                else
+                {
+                    _logger.LogInformation(1,$"Error: Unable to add user {user.Email} to the {roleName} role");
+                    return StatusCode(StatusCodes.Status400BadRequest, new ResponseDTO { Status = "Error", Message = $"Error: Unable to add user {user.Email} to the {roleName} role" });
+                }
+            }
+            return BadRequest(new { error = "unable to find user" });
+            
         }
 
     }
